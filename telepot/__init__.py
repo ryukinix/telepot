@@ -980,6 +980,28 @@ class Bot(_BotBase):
         p = _strip(locals())
         return self._api_request('deleteStickerFromSet', _rectify(p))
 
+    def setMyCommands(self, commands):
+        """
+        See: https://core.telegram.org/bots/api#setmycommands
+
+        :param commands: Array of BotCommand
+            see: https://core.telegram.org/bots/api#botcommand
+            BotCommand: {
+                   # Text of the command, 1-32 characters. Can contain
+                   # only lowercase English letters, digits and
+                   # underscores.
+                   "command": "mycommand"
+                   # Description of the command, 3-256 characters.
+                   "description": "my command description"
+            }
+        """
+        p = _strip(locals())
+        return self._api_request('setMyCommands', _rectify(p))
+
+    def getMyCommands(self):
+        """See: https://core.telegram.org/bots/api#getmycommands"""
+        return self._api_request('getMyCommands')
+
     def answerInlineQuery(self, inline_query_id, results,
                           cache_time=None,
                           is_personal=None,
